@@ -1,0 +1,26 @@
+lib/
+├── main.dart
+├── core/
+│   └── utils/
+│       └── constants.dart
+├── features/
+│   ├── auth/
+│   │   ├── data/
+│   │   │   └── models/user_model.dart
+│   │   ├── domain/
+│   │   │   └── repositories/auth_repository.dart
+│   │   ├── presentation/
+│   │   │   ├── screens/
+│   │   │   │   ├── splash_screen.dart
+│   │   │   │   ├── login_screen.dart
+│   │   │   │   ├── discover_watch_screen.dart
+│   │   │   │   ├── verify_code_screen.dart
+│   │   │   │   ├── forgot_password_screen.dart
+│   │   │   │   └── reset_password_screen.dart
+│   │   │   └── widgets/
+│   │   └── auth_module.dart
+└── app/
+    ├── router/
+    │   └── app_router.dart
+    └── themes/
+        └── app_theme.dart
