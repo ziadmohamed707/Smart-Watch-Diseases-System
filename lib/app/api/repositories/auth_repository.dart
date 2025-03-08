@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:iot_monitoring_chronic_diseases_system/app/token/token_storage.dart';
 
@@ -56,7 +55,8 @@ class AuthRepository {
     }
   }
 
-  Future<void> updateProfile(String token, Map<String, dynamic> updatedData) async {
+  Future<void> updateProfile(
+      String token, Map<String, dynamic> updatedData) async {
     try {
       debugPrint('Updating profile data.');
 
@@ -69,11 +69,36 @@ class AuthRepository {
       if (response.statusCode == 200 || response.statusCode == 204) {
         debugPrint('Profile updated successfully.');
       } else {
-        debugPrint('Failed to update profile. Status code: ${response.statusCode}');
+        debugPrint(
+            'Failed to update profile. Status code: ${response.statusCode}');
         throw Exception('Failed to update profile.');
       }
     } catch (e) {
       debugPrint('Error updating profile data. Error: $e');
+      rethrow;
+    }
+  }
+
+  Future<void> sendWatchData(
+      String token, Map<String, dynamic> watchData) async {
+    try {
+      debugPrint('upload Watch Data.....');
+
+      final response = await _apiService.post(
+        '/api/smartwatch/',
+        data: watchData,
+        headers: {'Authorization': 'Token $token'},
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 204) {
+        debugPrint('Watch Data uploaded successfully.');
+      } else {
+        debugPrint(
+            'Failed to upload Watch Data. Status code: ${response.statusCode}');
+        throw Exception('Failed to upload Watch Data.');
+      }
+    } catch (e) {
+      debugPrint('Error upload Watch Data. Error: $e');
       rethrow;
     }
   }

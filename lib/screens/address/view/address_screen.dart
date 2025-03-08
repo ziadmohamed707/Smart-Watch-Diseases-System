@@ -8,6 +8,8 @@ import 'package:iot_monitoring_chronic_diseases_system/utils/constants.dart';
 import 'package:iot_monitoring_chronic_diseases_system/widgets/custom_text.dart';
 
 class AddressScreen extends StatefulWidget {
+  const AddressScreen({super.key});
+
   @override
   _AddressScreenState createState() => _AddressScreenState();
 }
@@ -31,7 +33,7 @@ class _AddressScreenState extends State<AddressScreen> {
 
   Future<void> _fetchProfileData() async {
     try {
-      String? token = await TokenStorage.getToken();
+      String? token = TokenStorage.getToken();
       final jsonData = await _authRepository.fetchProfile(token!);
       setState(() {
         profile = Profile.fromJson(jsonData);
@@ -46,7 +48,7 @@ class _AddressScreenState extends State<AddressScreen> {
 
   Future<void> _saveChanges() async {
     try {
-      String? token = await TokenStorage.getToken();
+      String? token = TokenStorage.getToken();
       final updatedProfile = {
         "country": _countryController.text,
         "city": _cityController.text,
@@ -77,6 +79,12 @@ class _AddressScreenState extends State<AddressScreen> {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(

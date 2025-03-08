@@ -1,31 +1,23 @@
-// import 'package:flutter/material.dart';
-// import 'package:iot_monitoring_chronic_diseases_system/core/theme/app_theme.dart';
-// import 'app/router/app_router.dart';
-
-// void main() {
-//   runApp(LifePlusApp());
-// }
-
-// class LifePlusApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       theme: AppTheme.lightTheme,
-//       onGenerateRoute: AppRouter.onGenerateRoute,
-//       initialRoute: AppRouter.splashRoute,
-//     );
-//   }
-// }
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:iot_monitoring_chronic_diseases_system/app/themes/app_theme.dart';
-
 import 'provider/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
 void main() async {
-    WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
+
+  var initializationSettingsAndroid =
+      const AndroidInitializationSettings('@mipmap/ic_launcher');
+  var initializationSettings =
+      InitializationSettings(android: initializationSettingsAndroid);
+
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
 
   // Initialize Hive
   await Hive.initFlutter();
@@ -46,13 +38,20 @@ class _LifePlusAppState extends ConsumerState<LifePlusApp> {
   @override
   Widget build(BuildContext context) {
     final router = ref.watch(goRouterProvider);
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routeInformationParser: router.routeInformationParser,
-      routerDelegate: router.routerDelegate,
-      routeInformationProvider: router.routeInformationProvider,
-      title: 'LifePlus App',
-      theme: AppTheme.lightTheme,
+    return ScreenUtilInit(
+      designSize: Size(360, 690), // Adjust based on your UI design
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          routeInformationParser: router.routeInformationParser,
+          routerDelegate: router.routerDelegate,
+          routeInformationProvider: router.routeInformationProvider,
+          title: 'LifePlus App',
+          theme: AppTheme.darkTheme,
+        );
+      },
     );
   }
 }

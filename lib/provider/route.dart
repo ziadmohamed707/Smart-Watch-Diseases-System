@@ -2,13 +2,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iot_monitoring_chronic_diseases_system/app/token/token_storage.dart';
 import 'package:iot_monitoring_chronic_diseases_system/screens/address/view/address_screen.dart';
+import 'package:iot_monitoring_chronic_diseases_system/screens/allergy/view/allergy_screen.dart';
 import 'package:iot_monitoring_chronic_diseases_system/screens/chronicDiseases/view/chronic_diseases_screen.dart';
 import 'package:iot_monitoring_chronic_diseases_system/screens/discoverWatches/view/discover_watch_screen.dart';
+import 'package:iot_monitoring_chronic_diseases_system/screens/drugs/view/drugs_screen.dart';
 import 'package:iot_monitoring_chronic_diseases_system/screens/forgetPassword/view/forget_password_screen.dart';
 import 'package:iot_monitoring_chronic_diseases_system/screens/generalInformation/view/general_information_screen.dart';
 import 'package:iot_monitoring_chronic_diseases_system/screens/home_screen/view/home_screen.dart';
 import 'package:iot_monitoring_chronic_diseases_system/screens/login/view/login_banner.dart';
 import 'package:iot_monitoring_chronic_diseases_system/screens/login/view/login_screen.dart';
+import 'package:iot_monitoring_chronic_diseases_system/screens/medicalServices/view/medical_services.dart';
 import 'package:iot_monitoring_chronic_diseases_system/screens/profile/view/profile_screen.dart';
 import 'package:iot_monitoring_chronic_diseases_system/screens/resetPassword/view/reset_password_screen.dart';
 import 'package:iot_monitoring_chronic_diseases_system/screens/splash/view/splash_screen.dart';
@@ -19,6 +22,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
   if (TokenStorage.getToken() != null) {
     return GoRouter(
       initialLocation: '/discover_watch',
+      // initialLocation: '/home_screen',
       // initialLocation: '/',
 
       routes: [
@@ -71,8 +75,20 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           builder: (context, state) => ChronicDiseasesPage(),
         ),
         GoRoute(
+          path: '/drugs_screen',
+          builder: (context, state) => DrugsPage(),
+        ),
+        GoRoute(
+          path: '/allergy_screen',
+          builder: (context, state) => AllergyPage(),
+        ),
+        GoRoute(
           path: '/watch_data',
           builder: (context, state) => WatchDataScreen(),
+        ),
+        GoRoute(
+          path: '/medical_services',
+          builder: (context, state) => MedicalServices(),
         ),
       ],
     );
@@ -131,8 +147,20 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => ChronicDiseasesPage(),
       ),
       GoRoute(
+        path: '/drugs_screen',
+        builder: (context, state) => DrugsPage(),
+      ),
+      GoRoute(
+        path: '/allergy_screen',
+        builder: (context, state) => AllergyPage(),
+      ),
+      GoRoute(
         path: '/watch_data',
         builder: (context, state) => WatchDataScreen(),
+      ),
+      GoRoute(
+        path: '/medical_services',
+        builder: (context, state) => MedicalServices(),
       ),
     ],
   );

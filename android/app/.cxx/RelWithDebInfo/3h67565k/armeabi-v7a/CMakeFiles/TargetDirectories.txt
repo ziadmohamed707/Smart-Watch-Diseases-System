@@ -1,0 +1,2 @@
+D:/Ziad Mohamed/work/smart watch/Project/iot_monitoring_chronic_diseases_system/android/app/.cxx/RelWithDebInfo/3h67565k/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/Ziad Mohamed/work/smart watch/Project/iot_monitoring_chronic_diseases_system/android/app/.cxx/RelWithDebInfo/3h67565k/armeabi-v7a/CMakeFiles/rebuild_cache.dir

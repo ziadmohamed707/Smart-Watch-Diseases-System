@@ -39,6 +39,13 @@ class _DiscoverWatchScreenState extends ConsumerState<DiscoverWatchScreen> {
     super.dispose();
   }
 
+  Future<void> checkBluetooth() async {
+    var isOn = await FlutterBluePlus.isOn;
+    if (!isOn) {
+      debugPrint("Bluetooth is OFF. Please enable it.");
+    }
+  }
+
   void onConnectPressed(BluetoothDevice device, int index) {
     device.connectAndUpdateStream().catchError((e) {
       Snackbar.show(ABC.c, prettyException("Connect Error:", e),
@@ -74,8 +81,7 @@ class _DiscoverWatchScreenState extends ConsumerState<DiscoverWatchScreen> {
                           height: MediaQuery.of(context).size.height * 0.08,
                           width: MediaQuery.of(context).size.width * 0.9,
                           decoration: BoxDecoration(
-                            color: Color(AppConstants.white)
-                                .withValues(alpha: 230),
+                            color: Color.fromARGB(30, 255, 255, 255),
                             borderRadius: BorderRadius.all(
                               Radius.circular(10),
                             ),

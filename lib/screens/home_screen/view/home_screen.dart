@@ -4,6 +4,8 @@ import 'package:iot_monitoring_chronic_diseases_system/screens/watchData/view/wa
 import 'package:iot_monitoring_chronic_diseases_system/utils/constants.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -52,6 +54,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
 // Dummy pages (replace with your actual pages)
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(child: Text('Home Screen'));
@@ -59,6 +63,8 @@ class HomePage extends StatelessWidget {
 }
 
 class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(child: Text('Profile Screen'));

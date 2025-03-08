@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iot_monitoring_chronic_diseases_system/app/api/repositories/auth_repository.dart';
 import 'package:iot_monitoring_chronic_diseases_system/app/token/token_storage.dart';
 import 'package:iot_monitoring_chronic_diseases_system/screens/generalInformation/model/profile.dart';
@@ -8,6 +9,8 @@ import 'package:iot_monitoring_chronic_diseases_system/utils/constants.dart';
 import 'package:iot_monitoring_chronic_diseases_system/widgets/custom_text.dart';
 
 class GeneralInformationScreen extends StatefulWidget {
+  const GeneralInformationScreen({super.key});
+
   @override
   _GeneralInformationScreenState createState() =>
       _GeneralInformationScreenState();
@@ -33,7 +36,7 @@ class _GeneralInformationScreenState extends State<GeneralInformationScreen> {
 
   Future<void> _fetchProfileData() async {
     try {
-      String? token = await TokenStorage.getToken();
+      String? token = TokenStorage.getToken();
       final jsonData = await _authRepository.fetchProfile(token!);
       setState(() {
         profile = Profile.fromJson(jsonData);
@@ -53,7 +56,7 @@ class _GeneralInformationScreenState extends State<GeneralInformationScreen> {
 
   Future<void> _saveChanges() async {
     try {
-      String? token = await TokenStorage.getToken();
+      String? token = TokenStorage.getToken();
       final updatedProfile = {
         "name": _nameController.text,
         "phone_number": _phoneNumberController.text,

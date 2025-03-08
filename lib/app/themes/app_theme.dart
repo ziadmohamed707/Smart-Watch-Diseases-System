@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  // Define the light theme
-  static ThemeData lightTheme = ThemeData(
-    brightness: Brightness.light,
-    primaryColor: Colors.white,
+ 
+  static ThemeData darkTheme = ThemeData(
+    brightness: Brightness.dark,
+    primaryColor: Colors.black,
     scaffoldBackgroundColor: Color(0xFF1E1E20),
     appBarTheme: AppBarTheme(
       backgroundColor: Color(0xFF1E1E20),
@@ -25,8 +25,8 @@ class AppTheme {
       labelStyle: TextStyle(color: Colors.white),
     ),
     textTheme: TextTheme(
-      bodyLarge: TextStyle(color: Colors.black),
-      bodyMedium: TextStyle(color: Colors.black87),
+      bodyLarge: TextStyle(color: Colors.white),
+      bodyMedium: TextStyle(color: Colors.white70),
     ),
   );
 }

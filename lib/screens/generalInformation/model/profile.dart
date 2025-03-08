@@ -1,3 +1,4 @@
+
 class Profile {
   int? id;
   String? name;
@@ -18,6 +19,7 @@ class Profile {
   String? slug;
   DateTime? dateTime;
   int? user;
+  String? image;
 
   // Constructor
   Profile({
@@ -40,6 +42,7 @@ class Profile {
     this.slug,
     this.dateTime,
     this.user,
+    this.image,
   });
 
   // Factory method to create an instance from JSON
@@ -64,6 +67,7 @@ class Profile {
       slug: json['slug'],
       dateTime: json['dete_time'] != null ? DateTime.parse(json['dete_time']) : null,
       user: json['user'],
+      image: json['image'],
     );
   }
 
@@ -89,6 +93,7 @@ class Profile {
       'slug': slug,
       'dete_time': dateTime?.toIso8601String(),
       'user': user,
+      'image': image,
     };
   }
 }

@@ -11,13 +11,13 @@ class LoginBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AuthRepository _authRepository = AuthRepository();
-    Map<String, dynamic>? _profileData;
-    String? _error;
+    final AuthRepository authRepository = AuthRepository();
+    Map<String, dynamic>? profileData;
+    String? error;
 
     String? token = TokenStorage.getToken();
     return Scaffold(
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             CustomAppBarSpacer(),
@@ -25,7 +25,7 @@ class LoginBanner extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Image.asset("assets/banner.png"),
             ),
-            Spacer(),
+            SizedBox(height: 150.0),
             CustomElevatedButton(
               context,
               'Get Started',
@@ -33,7 +33,6 @@ class LoginBanner extends StatelessWidget {
               AppConstants.purple,
               () => {context.push('/discover_watch')},
             ),
-           
             SizedBox(height: 18.0),
           ],
         ),
